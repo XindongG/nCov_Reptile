@@ -15,7 +15,7 @@ exports.post = async(url,data) => {
             body:JSON.stringify(data)
         }, (error, response)=>{
             if(error) reject(error)
-            resolve(response.body?response.body:response)
+            resolve(response ? response.body?response.body:response : '')
         });
     })
 }

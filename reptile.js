@@ -8,7 +8,7 @@ const fs = require('fs');
 const CronJob = require('cron').CronJob;
 const { post } = require('./utils/request');
 const Reptile=()=>{
-    puppeteer.launch().then(async browser => {
+    puppeteer.launch({ args: ['--no-sandbox'] }).then(async browser => {
         const browserWSEndpoint = browser.wsEndpoint();
         const browser2 = await puppeteer.connect({browserWSEndpoint});
         const page = await browser.newPage();
