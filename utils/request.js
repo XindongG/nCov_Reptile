@@ -1,10 +1,5 @@
 const request = require('request')
-let baseUrl = ''
-if(process.env.NODE_ENV='production'){
-    baseUrl = 'https://apptest.picchealth.com/ncov'
-}else{
-    baseUrl = 'https://apptest.picchealth.com/ncov'
-}
+let baseUrl = 'https://ncov.picchealth.com/ncov'
 exports.post = async(url,data) => {
     return new Promise((resolve, reject) => {
         request.post({
