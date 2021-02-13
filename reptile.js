@@ -7,9 +7,9 @@ const puppeteer = require('puppeteer');
 const CronJob = require('cron').CronJob;
 const { post } = require('./utils/request');
 const browserFetcher = puppeteer.createBrowserFetcher();
-    let nowTime = new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,19).replace("T"," ")
     browserFetcher.download("818858").then((res) => {
         const Reptile=()=>{
+            let nowTime = new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,19).replace("T"," ")
             puppeteer.launch({ args: ['--no-sandbox'] }).then(async browser => {
                 const browserWSEndpoint = browser.wsEndpoint();
                 const browser2 = await puppeteer.connect({browserWSEndpoint});
@@ -20,7 +20,7 @@ const browserFetcher = puppeteer.createBrowserFetcher();
                     if (response.url() === 'http://103.66.32.242:8005/zwfwMovePortal/interface/interfaceJson' && response.request()._method !== 'OPTIONS') {
                         response.json().then(async res=>{
                             post('/api/addRisk',res).then(async data=>{
-                                console.error(`${data}___${nowTime}___数据入库成功`)
+                                console.log(`${data}___${nowTime}___数据入库成功`)
                                 // 关闭页面并断开连接
                                 await page.close()
                                 await browser2.close();
