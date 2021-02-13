@@ -16,6 +16,7 @@ const Reptile=()=>{
         page.on('response',(response)=>{
             if (response.url() === 'http://103.66.32.242:8005/zwfwMovePortal/interface/interfaceJson' && response.request()._method !== 'OPTIONS') {
                 response.json().then(async res=>{
+                    console.log(JSON.stringify(res),'res')
                     post('/api/addRisk',res).then(async data=>{
                         console.log(`${data}___${new Date().toLocaleTimeString()}___数据入库成功`)
                         // 关闭页面并断开连接
